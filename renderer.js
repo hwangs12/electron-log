@@ -4,9 +4,9 @@ information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.
 const user = document.getElementById("user");
 user.innerText = environment.user();
 
-/* const func = async () => {
+const func = async () => {
     const response = await window.versions.ping();
     console.log(response);
 };
 
-func(); */
+func();

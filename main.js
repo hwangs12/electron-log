@@ -1,7 +1,11 @@
+console.log("main process working");
+console.log("main.js");
+
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("node:path");
 
 const createWindow = () => {
+    /* you can create as many windows as you want */
     const win = new BrowserWindow({
         width: 800,
         height: 600,
@@ -11,6 +15,12 @@ const createWindow = () => {
     });
 
     win.loadFile("index.html");
+
+    win.webContents.openDevTools();
+
+    win.on("closed", () => {
+        win = null;
+    });
 };
 
 app.whenReady().then(() => {
