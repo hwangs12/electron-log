@@ -16,7 +16,7 @@ errorBtn.addEventListener("click", function () {
      * rather than exposing ipc renderer directly in renderer js
      * we use preload script to access it through windows.versions
      */
-    windows.ipcProcess.sendError();
+    window.ipcProcess.sendError();
 });
 
 // func();
