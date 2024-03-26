@@ -12,7 +12,11 @@ user.innerText = environment.user();
 const errorBtn = document.getElementById("ipcButton");
 
 errorBtn.addEventListener("click", function () {
-    window.versions.sendError();
+    /**
+     * rather than exposing ipc renderer directly in renderer js
+     * we use preload script to access it through windows.versions
+     */
+    windows.ipcProcess.sendError();
 });
 
 // func();
