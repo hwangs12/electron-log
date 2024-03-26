@@ -1,6 +1,10 @@
 console.log("main process working");
 console.log("main.js");
 
+const electron = require("electron");
+const ipc = electron.ipcMain;
+const dialog = electron.dialog;
+
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("node:path");
 
@@ -23,6 +27,10 @@ const createWindow = () => {
         win = null;
     });
 };
+
+ipc.on("open-error-dialog", (event) => {
+    dialog.showErrorBox("An error message", "Demo of an error message");
+});
 
 app.whenReady().then(() => {
     ipcMain.handle("ping", () => "pong");
