@@ -21,4 +21,7 @@ errorBtn.addEventListener("click", function () {
 
 window.electron.sendBackError();
 
+let rendwin = new BrowserWindow();
+rendwin.loadURL("http://github.com");
+
 // func();
