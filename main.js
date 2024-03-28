@@ -30,6 +30,10 @@ const createWindow = () => {
 
 ipc.on("open-error-dialog", (event) => {
     dialog.showErrorBox("An error message", "Demo of an error message");
+    event.sender.send(
+        "opened-error-dialog",
+        "Main process opened error dialog"
+    );
 });
 
 app.whenReady().then(() => {

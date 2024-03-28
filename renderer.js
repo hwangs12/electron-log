@@ -19,4 +19,6 @@ errorBtn.addEventListener("click", function () {
     window.ipcProcess.sendError();
 });
 
+window.electron.sendBackError();
+
 // func();

@@ -14,3 +14,8 @@ contextBridge.exposeInMainWorld("environment", {
 contextBridge.exposeInMainWorld("ipcProcess", {
     sendError: () => ipcRenderer.send("open-error-dialog"),
 });
+
+contextBridge.exposeInMainWorld("electron", {
+    sendBackError: () =>
+        ipcRenderer.on("opened-error-dialog", (event, arg) => console.log(arg)),
+});
