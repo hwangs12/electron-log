@@ -16,12 +16,14 @@ errorBtn.addEventListener("click", function () {
      * rather than exposing ipc renderer directly in renderer js
      * we use preload script to access it through windows.versions
      */
-    window.ipcProcess.sendError();
+    ipcProcess.sendError();
 });
 
-window.electron.sendBackError();
+electron.sendBackError();
+
+/* const BrowserWindow = environment.browserWin;
 
 let rendwin = new BrowserWindow();
-rendwin.loadURL("http://github.com");
+rendwin.loadURL("http://github.com"); */
 
 // func();

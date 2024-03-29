@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld("versions", {
 
 contextBridge.exposeInMainWorld("environment", {
     user: () => process.env.USER || "",
+    // browserWin: electron.remote.BrowserWindow,
 });
 
 contextBridge.exposeInMainWorld("ipcProcess", {
