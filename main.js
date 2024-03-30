@@ -1,6 +1,3 @@
-console.log("main process working");
-console.log("main.js");
-
 const electron = require("electron");
 const ipc = electron.ipcMain;
 const dialog = electron.dialog;
@@ -8,9 +5,11 @@ const dialog = electron.dialog;
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("node:path");
 
+let window;
+
 const createWindow = () => {
     /* you can create as many windows as you want */
-    const win = new BrowserWindow({
+    const window = new BrowserWindow({
         width: 800,
         height: 600,
         backgroundColor: "#1F1A24",
@@ -19,13 +18,11 @@ const createWindow = () => {
         },
     });
 
-    win.loadFile("index.html");
+    window.loadFile("index.html");
+    window.webContents.send("message:update", "Doing work...");
+    console.log(window.webContents);
 
-    win.webContents.openDevTools();
-
-    win.on("closed", () => {
-        win = null;
-    });
+    return window;
 };
 
 ipc.on("open-error-dialog", (event) => {
@@ -34,17 +31,20 @@ ipc.on("open-error-dialog", (event) => {
         "opened-error-dialog",
         "Main process opened error dialog"
     );
+    let window = new BrowserWindow();
+    window.loadURL("http://github.com");
 });
 
-app.whenReady().then(() => {
-    ipcMain.handle("ping", () => "pong");
-    createWindow();
-
-    app.on("activate", () => {
-        if (BrowserWindow.getAllWindows().length === 0) createWindow();
-    });
+app.on("ready", () => {
+    window = createWindow();
 });
 
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") app.quit();
+});
+
+app.on("activate", () => {
+    if (electronBrowserWindow.getAllWindows().length === 0) {
+        createWindow();
+    }
 });

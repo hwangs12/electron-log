@@ -1,4 +1,4 @@
-const { contextBridge, ipcRenderer } = require("electron");
+const { contextBridge, ipcRenderer, BrowserWindow } = require("electron");
 
 contextBridge.exposeInMainWorld("versions", {
     node: () => process.versions.node,
@@ -14,9 +14,56 @@ contextBridge.exposeInMainWorld("environment", {
 
 contextBridge.exposeInMainWorld("ipcProcess", {
     sendError: () => ipcRenderer.send("open-error-dialog"),
+    printMessage: () =>
+        ipcRenderer.on("message:update", function (evt, message) {
+            console.log(evt, message); // Returns: {'SAVED': 'File Saved'}
+        }),
 });
 
 contextBridge.exposeInMainWorld("electron", {
     sendBackError: () =>
         ipcRenderer.on("opened-error-dialog", (event, arg) => console.log(arg)),
 });
+
+const ipc = {
+    render: {
+        // From render to main.
+        send: [],
+        // From main to render.
+        receive: [
+            "message:update", // Here is your channel name
+        ],
+        // From render to main and back again.
+        sendReceive: [],
+    },
+};
+
+// Exposed protected methods in the render process.
+contextBridge.exposeInMainWorld(
+    // Allowed 'ipcRenderer' methods.
+    "ipcRender",
+    {
+        // From render to main.
+        send: (channel, args) => {
+            let validChannels = ipc.render.send;
+            if (validChannels.includes(channel)) {
+                ipcRenderer.send(channel, args);
+            }
+        },
+        // From main to render.
+        receive: (channel, listener) => {
+            let validChannels = ipc.render.receive;
+            if (validChannels.includes(channel)) {
+                // Deliberately strip event as it includes `sender`.
+                ipcRenderer.on(channel, (event, ...args) => listener(...args));
+            }
+        },
+        // From render to main and back again.
+        invoke: (channel, args) => {
+            let validChannels = ipc.render.sendReceive;
+            if (validChannels.includes(channel)) {
+                return ipcRenderer.invoke(channel, args);
+            }
+        },
+    }
+);

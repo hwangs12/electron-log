@@ -21,6 +21,9 @@ errorBtn.addEventListener("click", function () {
 
 electron.sendBackError();
 
+window.ipcRender.receive("message:update", (message) => {
+    document.getElementById("text-caption").innerText = message;
+});
 /* const BrowserWindow = environment.browserWin;
 
 let rendwin = new BrowserWindow();
