@@ -1,3 +1,23 @@
 body {
     color: #ffffff;
+    font-size: 16px;
+}
+
+.chat-screen {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 90vh;
+    opacity: 0.5;
+}
+
+.chat-manager {
+    border-top: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.chat-manager:nth-child(1) {
+    border-right: 2px solid;
 }

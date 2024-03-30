@@ -11,15 +11,24 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <h1>Hello World! <span id="user"></span></h1>
-        <!-- We are using Node.js <span id="node-version"></span>, Chromium
-        <span id="chrome-version"></span>, and Electron
-        <span id="electron-version"></span> -->
-        <p id="info"></p>
-        <button id="ipcButton">Click me</button>
-        <h1>
-            <span id="text-caption">Show message here...</span>
-        </h1>
+        <h1>Hey <span id="user"></span></h1>
+        <div class="chat-screen">
+            <div class="chat-manager chat-friends">
+                <div class="friend">yolo</div>
+                <div class="friend">yolo</div>
+                <div class="friend">yolo</div>
+                <div class="friend">yolo</div>
+                <div class="friend">yolo</div>
+                <div class="friend">yolo</div>
+                <div class="friend">yolo</div>
+                <div class="friend">yolo</div>
+                <div class="friend">yolo</div>
+            </div>
+            <div class="chat-manager chat-contents">
+                <p>contents</p>
+                <div class="friend-chat">yolo</div>
+            </div>
+        </div>
     </body>
     <script type="module" src="./renderer.js"></script>
 </html>

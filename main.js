@@ -1,3 +1,5 @@
+const path = require("path");
+const env = process.env.NODE_ENV || "development";
 const electron = require("electron");
 const dialog = electron.dialog;
 
@@ -5,6 +7,13 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("node:path");
 
 let window;
+
+if (env === "development") {
+    require("electron-reload")(__dirname, {
+        electron: path.join(__dirname, "node_modules", ".bin", "electron"),
+        hardResetMethod: "exit",
+    });
+}
 
 const createWindow = () => {
     /* you can create as many windows as you want */
@@ -18,8 +27,6 @@ const createWindow = () => {
     });
 
     window.loadFile("index.html");
-    window.webContents.send("message:update", "Doing work...");
-    console.log(window.webContents);
 
     return window;
 };
