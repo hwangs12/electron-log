@@ -1,5 +1,4 @@
 const electron = require("electron");
-const ipc = electron.ipcMain;
 const dialog = electron.dialog;
 
 const { app, BrowserWindow, ipcMain } = require("electron");
@@ -25,7 +24,7 @@ const createWindow = () => {
     return window;
 };
 
-ipc.on("open-error-dialog", (event) => {
+ipcMain.on("open-error-dialog", (event) => {
     dialog.showErrorBox("An error message", "Demo of an error message");
     event.sender.send(
         "opened-error-dialog",
