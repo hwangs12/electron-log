@@ -3,6 +3,10 @@ body {
     font-size: 16px;
 }
 
+button {
+    cursor: pointer;
+}
+
 .chat-screen {
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -31,4 +35,6 @@ body {
     align-items: center;
     height: 50px;
     border-bottom: 1px solid;
+    width: 100%;
+    justify-content: center;
 }
