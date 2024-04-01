@@ -1,4 +1,3 @@
-const path = require("path");
 const env = process.env.NODE_ENV || "development";
 const electron = require("electron");
 const dialog = electron.dialog;
