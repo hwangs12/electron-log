@@ -1,6 +1,7 @@
 body {
     color: #ffffff;
     font-size: 16px;
+    overflow: hidden;
 }
 
 button {
@@ -32,7 +33,7 @@ button {
 .chat-preview {
     display: flex;
     align-items: center;
-    height: 50px;
+    min-height: 50px;
     border-bottom: 1px solid;
     width: 100%;
     justify-content: center;
@@ -45,6 +46,9 @@ button {
 }
 
 #add-chat {
+    position: absolute;
+    top: 100px;
+    right: 20px;
     background-color: transparent;
     border: 2px solid #fff;
     border-radius: 5px;
@@ -55,4 +59,9 @@ button {
 #add-chat:active {
     border: 2px solid rgba(255, 255, 255, 0.5);
     color: rgba(255, 255, 255, 0.5);
+}
+
+#chat-preview-section {
+    overflow-y: scroll;
+    height: 90%;
 }
