@@ -6,6 +6,7 @@ var addChatButton = document.getElementById("add-chat");
 
 /**
  * function to add chat preview on click
+ * author: Jun Hwang
  */
 function addChatPreview() {
     var chatPreviewSection = document.getElementById("chat-preview-section");
