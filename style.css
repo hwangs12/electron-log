@@ -61,6 +61,12 @@ button {
     color: rgba(255, 255, 255, 0.5);
 }
 
+#add-chat:disabled {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: default;
+}
+
 #chat-preview-section {
     overflow-y: scroll;
     height: 90%;

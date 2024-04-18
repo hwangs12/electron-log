@@ -17,5 +17,18 @@ function addChatPreview() {
     chatPreviewSection.appendChild(chatPreviewNode).cloneNode(true);
 }
 
+/**
+ * function to add channel
+ * author: Jun Hwang
+ * @version: 1.0
+ */
+function addChannel() {
+    var channel = document.getElementById("channel-manager-view");
+    var channelInput = document.createElement("input");
+    channelInput.classList.add("input-style");
+    channel.appendChild(channelInput);
+    addChatButton.disabled = true;
+}
+
 /* add event listener on chat button */
-addChatButton.addEventListener("click", addChatPreview);
+addChatButton.addEventListener("click", addChannel);
