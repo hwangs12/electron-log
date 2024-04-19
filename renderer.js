@@ -1,3 +1,5 @@
+import { checkBox } from "./svg.js";
+
 const user = document.getElementById("user");
 user.innerText = environment.user();
 
@@ -24,9 +26,18 @@ function addChatPreview() {
  */
 function addChannel() {
     var channel = document.getElementById("channel-manager-view");
-    var channelInput = document.createElement("input");
-    channelInput.classList.add("input-style");
-    channel.appendChild(channelInput);
+    var channelForm = document.createElement("form");
+    var fieldset = document.createElement("fieldset");
+    var inputElement = document.createElement("input");
+    inputElement.classList.add("channel-input");
+    var confirmButtonElement = document.createElement("button");
+    confirmButtonElement.classList.add("channel-submit");
+    confirmButtonElement.innerHTML = checkBox();
+
+    fieldset.appendChild(inputElement);
+    fieldset.appendChild(confirmButtonElement);
+    channelForm.appendChild(fieldset);
+    channel.appendChild(channelForm);
     addChatButton.disabled = true;
 }
 
