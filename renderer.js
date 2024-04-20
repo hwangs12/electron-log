@@ -33,7 +33,7 @@ function addChannel() {
     var confirmButtonElement = document.createElement("button");
     confirmButtonElement.classList.add("channel-submit");
     confirmButtonElement.innerHTML = checkBox();
-
+    inputElement.setAttribute("placeholder", "Enter Channel Name");
     fieldset.appendChild(inputElement);
     fieldset.appendChild(confirmButtonElement);
     channelForm.appendChild(fieldset);

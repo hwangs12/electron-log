@@ -80,16 +80,37 @@ fieldset {
     position: relative;
     bottom: 2rem;
     left: 1rem;
+    height: 3rem;
+    display: flex;
 }
 
 label,
-input,
-button {
-    font-size: inherit;
+input {
+    font-size: 1.2rem;
     padding: 0.2rem;
     margin: 0.1rem 0.2rem;
     /* the following ensures they're all using the same box-model for rendering */
     -moz-box-sizing: content-box; /* or `border-box` */
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
+}
+
+.channel-submit {
+    border: none;
+    background-color: #1f1a24;
+    color: #fff;
+}
+
+.channel-input {
+    border-radius: 0.8rem;
+    border: none;
+}
+
+.channel-input::placeholder {
+    text-align: center;
+}
+
+svg {
+    margin: 0 auto;
+    display: block;
 }
