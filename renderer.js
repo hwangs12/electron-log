@@ -1,10 +1,20 @@
-import { checkBox } from "./svg.js";
+import { checkBox, addButton } from "./svg.js";
 
 const user = document.getElementById("user");
 user.innerText = environment.user();
 
 /* add chat button */
 var addChatButton = document.getElementById("add-chat");
+
+/**
+ * function to add chat button on content loaded
+ * author: Jun Hwang
+ * @version: 1.0
+ */
+
+function addChatButtonOnLoad() {
+    addChatButton.innerHTML = addButton();
+}
 
 /**
  * function to add chat preview on click
@@ -38,8 +48,11 @@ function addChannel() {
     fieldset.appendChild(confirmButtonElement);
     channelForm.appendChild(fieldset);
     channel.appendChild(channelForm);
-    addChatButton.disabled = true;
+    addChatButton.style.transform = "rotate(90deg)";
 }
+
+/* add event listener on document load */
+document.addEventListener("DOMContentLoaded", addChatButtonOnLoad);
 
 /* add event listener on chat button */
 addChatButton.addEventListener("click", addChannel);
