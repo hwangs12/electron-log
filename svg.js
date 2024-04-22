@@ -14,6 +14,16 @@ export function checkBox() {
 export function addButton() {
     return `
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#fff" height="2rem" width="2rem" version="1.1" id="Capa_1" viewBox="0 0 490 490" xml:space="preserve">
+            <animateTransform
+                attributeName="transform" attributeType="XML"
+                type="rotate"
+                begin="add-button-svg.click" dur="1s" end="add-button-svg.click"
+                from="0" to="45"
+                additive="sum"
+                accumulate="sum"
+                fill="freeze"
+                repeatCount="indefinite"
+            />
             <g>
                 <g>
                     <g id="add-button-svg">

@@ -69,7 +69,7 @@ button {
 fieldset {
     font-size: 1rem;
     padding: 0.5rem;
-    border-radius: 1rem;
+    border: none;
     font-family: sans-serif;
     position: relative;
     bottom: 2rem;
@@ -80,7 +80,7 @@ fieldset {
 
 label,
 input {
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding: 0.2rem;
     margin: 0.1rem 0.2rem;
     /* the following ensures they're all using the same box-model for rendering */
@@ -109,17 +109,15 @@ svg {
     display: block;
 }
 
-@keyframes antiClockwiseSpin {
-    from {
-        transform: rotate(0deg);
-    }
+/* @keyframes antiClockwiseSpin {
     to {
         transform: rotate(45deg);
     }
 }
-
-svg:hover #add-button-svg {
+ */
+/* svg:hover #add-button-svg {
     animation: antiClockwiseSpin 0.1s infinite linear;
     transform-origin: center;
     animation-iteration-count: 1;
 }
+ */
