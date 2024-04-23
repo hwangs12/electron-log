@@ -109,6 +109,10 @@ svg {
     display: block;
 }
 
+.rotate45 {
+    rotate: -45deg;
+}
+
 /* @keyframes antiClockwiseSpin {
     to {
         transform: rotate(45deg);

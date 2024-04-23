@@ -48,11 +48,11 @@ function addChannel() {
     fieldset.appendChild(confirmButtonElement);
     channelForm.appendChild(fieldset);
     channel.appendChild(channelForm);
-    addChatButton.style.transform = "rotate(90deg)";
+    addChatButton.classList.add("rotate45");
 }
 
 /* add event listener on document load */
 document.addEventListener("DOMContentLoaded", addChatButtonOnLoad);
 
-/* add event listener on chat button */
+/* add event listener on add chat button */
 addChatButton.addEventListener("click", addChannel);
