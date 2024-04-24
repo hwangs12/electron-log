@@ -34,25 +34,41 @@ function addChatPreview() {
  * author: Jun Hwang
  * @version: 1.0
  */
-function addChannel() {
+function toggleAddChannel() {
     var channel = document.getElementById("channel-manager-view");
-    var channelForm = document.createElement("form");
-    var fieldset = document.createElement("fieldset");
-    var inputElement = document.createElement("input");
-    inputElement.classList.add("channel-input");
-    var confirmButtonElement = document.createElement("button");
-    confirmButtonElement.classList.add("channel-submit");
-    confirmButtonElement.innerHTML = checkBox();
-    inputElement.setAttribute("placeholder", "Enter Channel Name");
-    fieldset.appendChild(inputElement);
-    fieldset.appendChild(confirmButtonElement);
-    channelForm.appendChild(fieldset);
-    channel.appendChild(channelForm);
-    addChatButton.classList.add("rotate45");
+
+    var addChannelInputForm = channel.childNodes[3];
+
+    // confirmButtonElement.disabled = true;
+    if (addChatButton.classList.contains("rotate45")) {
+        addChatButton.classList.remove("rotate45");
+        channel.removeChild(addChannelInputForm);
+    } else {
+        addChatButton.classList.add("rotate45");
+        var channelForm = document.createElement("form");
+        var fieldset = document.createElement("fieldset");
+        var inputElement = document.createElement("input");
+        inputElement.classList.add("channel-input");
+        var confirmButtonElement = document.createElement("button");
+        confirmButtonElement.classList.add("channel-submit");
+        confirmButtonElement.innerHTML = checkBox();
+        inputElement.setAttribute("placeholder", "Enter Channel Name");
+        fieldset.appendChild(inputElement);
+        fieldset.appendChild(confirmButtonElement);
+        channelForm.appendChild(fieldset);
+        channel.appendChild(channelForm);
+    }
 }
+
+/**
+ * function to cancel adding channel
+ * author: Jun Hwang
+ * @version: 1.0
+ */
+function cancelChannel() {}
 
 /* add event listener on document load */
 document.addEventListener("DOMContentLoaded", addChatButtonOnLoad);
 
 /* add event listener on add chat button */
-addChatButton.addEventListener("click", addChannel);
+addChatButton.addEventListener("click", toggleAddChannel);
