@@ -95,6 +95,10 @@ input {
     color: #fff;
 }
 
+.channel-submit:disabled svg {
+    fill: #ffffff80;
+}
+
 .channel-input {
     border-radius: 0.8rem;
     border: none;

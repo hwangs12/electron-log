@@ -59,6 +59,7 @@ function createForm() {
     var inputElement = document.createElement("input");
     inputElement.classList.add("channel-input");
     var confirmButtonElement = document.createElement("button");
+    confirmButtonElement.setAttribute("id", "confirm-input-submit");
     confirmButtonElement.classList.add("channel-submit");
     confirmButtonElement.innerHTML = checkBox();
     inputElement.setAttribute("placeholder", "Enter Channel Name");
@@ -66,14 +67,18 @@ function createForm() {
     fieldset.appendChild(confirmButtonElement);
     channelForm.appendChild(fieldset);
     channel.appendChild(channelForm);
+    disableInputSubmitAtInit();
 }
 
 /**
- * function to cancel adding channel
+ * function to disable input submit button
  * author: Jun Hwang
  * @version: 1.0
  */
-function cancelChannel() {}
+function disableInputSubmitAtInit() {
+    var confirmInputSubmit = document.getElementById("confirm-input-submit");
+    confirmInputSubmit.disabled = true;
+}
 
 /* add event listener on document load */
 document.addEventListener("DOMContentLoaded", addChatButtonOnLoad);
