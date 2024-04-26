@@ -116,16 +116,3 @@ svg {
 .rotate45 {
     rotate: -45deg;
 }
-
-/* @keyframes antiClockwiseSpin {
-    to {
-        transform: rotate(45deg);
-    }
-}
- */
-/* svg:hover #add-button-svg {
-    animation: antiClockwiseSpin 0.1s infinite linear;
-    transform-origin: center;
-    animation-iteration-count: 1;
-}
- */
