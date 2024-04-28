@@ -92,7 +92,7 @@ input {
 .channel-submit {
     border: none;
     background-color: #1f1a24;
-    color: #fff;
+    fill: #fff;
 }
 
 .channel-submit:disabled svg {

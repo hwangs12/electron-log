@@ -6,7 +6,6 @@ user.innerText = environment.user();
 /* add chat button */
 var addChatButton = document.getElementById("add-chat");
 var channel = document.getElementById("channel-manager-view");
-var confirmInputSubmitButton = document.getElementById("confirm-input-submit");
 
 /**
  * function to add chat button on content loaded
@@ -80,8 +79,10 @@ function createForm() {
  * @version: 1.0
  */
 function disableInputSubmitAtInit() {
-    var confirmInputSubmit = document.getElementById("confirm-input-submit");
-    confirmInputSubmit.disabled = true;
+    let confirmInputSubmitButton = document.getElementById(
+        "confirm-input-submit"
+    );
+    confirmInputSubmitButton.disabled = true;
 }
 
 /**
@@ -90,9 +91,30 @@ function disableInputSubmitAtInit() {
  * @version: 1.0
  */
 function confirmSubmitAdd() {
-    let formdata = new FormData(document.getElementById("channel-add-form"));
+    const formElement = document.getElementById("channel-add-form");
+    let formdata = new FormData(formElement);
     let input = formdata.get("channel-name-input");
     addChatPreview(input);
+    /* reset input field after submit */
+    formElement.reset();
+    /* rotate back the add button */
+    addChatButton.classList.remove("rotate45");
+    /* remove form field */
+    formElement.remove();
+}
+
+/**
+ * validate input value
+ * author: Jun Hwang
+ * @version: 1.0
+ */
+function validateInput(inputValue) {
+    let confirmInputSubmitButton = document.getElementById(
+        "confirm-input-submit"
+    );
+    confirmInputSubmitButton.disabled = !(
+        inputValue.length > 0 && /^[0-9a-zA-Z\-_]*$/.test(inputValue)
+    );
 }
 
 /* add event listener on document load */
@@ -101,6 +123,15 @@ document.addEventListener("DOMContentLoaded", addChatButtonOnLoad);
 /* add event listener on add chat button */
 addChatButton.addEventListener("click", toggleAddChannel);
 
+/* track the input value for channel add form input */
+document.addEventListener("keyup", function (event) {
+    event.preventDefault();
+    if (event.target.id === "channel-name-input") {
+        validateInput(event.target.value);
+    }
+});
+
+/* confirm submit when form input is complete and button is pressed */
 document.body.addEventListener("submit", function (event) {
     event.preventDefault();
     if (event.target.id === "channel-add-form") {
