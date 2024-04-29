@@ -138,3 +138,5 @@ document.body.addEventListener("submit", function (event) {
         confirmSubmitAdd();
     }
 });
+
+run();
