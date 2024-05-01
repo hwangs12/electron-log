@@ -1,4 +1,5 @@
 import { checkBox, addButton } from "./svg.js";
+// import Realm from "realm";
 
 const user = document.getElementById("user");
 user.innerText = environment.user();
@@ -138,5 +139,3 @@ document.body.addEventListener("submit", function (event) {
         confirmSubmitAdd();
     }
 });
-
-run();

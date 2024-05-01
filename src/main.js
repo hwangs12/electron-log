@@ -13,6 +13,10 @@ const createWindow = () => {
         },
     });
 
+    // to prevent the Sync Connection from ending prematurely, start reading from stdin so we don't exit
+
+    process.stdin.resume();
+
     window.loadFile(path.join(__dirname, "index.html"));
 
     return window;
