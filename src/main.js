@@ -13,14 +13,20 @@ const createWindow = () => {
         },
     });
 
-    window.loadFile("index.html");
+    window.loadFile(path.join(__dirname, "index.html"));
 
     return window;
 };
 
 if (isDev) {
     require("electron-reload")(__dirname, {
-        electron: path.resolve(__dirname, "node_modules", ".bin", "electron"),
+        electron: path.resolve(
+            __dirname,
+            "..",
+            "node_modules",
+            ".bin",
+            "electron"
+        ),
     });
 }
 
