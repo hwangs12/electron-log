@@ -1,4 +1,4 @@
-import Realm from "realm";
+/* import * as Realm from "realm";
 
 const app = new Realm.App({ id: "mongo-to-electron-jzutigk" }); // create a new instance of the Realm.App
 export async function run() {
@@ -33,4 +33,8 @@ export async function run() {
             age: 2,
         });
     });
-}
+} */
+
+run().catch((err) => {
+    console.error("Failed to open realm: ", err);
+});
