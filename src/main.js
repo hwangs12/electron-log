@@ -23,7 +23,7 @@ async function run() {
     }
 }
 
-run().catch(console.error);
+// run().catch(console.error);
 
 const createWindow = () => {
     /* you can create as many windows as you want */
@@ -65,4 +65,12 @@ app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow();
     }
+});
+
+ipcMain.on("add-chat-box", async function (event) {
+    console.log("hoho");
+    await client.connect();
+    const db = client.db("chat");
+    const collection = db.collection("chatroom");
+    await collection.insertOne({ haha: "nana" });
 });

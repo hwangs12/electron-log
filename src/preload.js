@@ -18,6 +18,7 @@ contextBridge.exposeInMainWorld("ipcProcess", {
         ipcRenderer.on("message:update", function (evt, message) {
             console.log(evt, message); // Returns: {'SAVED': 'File Saved'}
         }),
+    addChatDatabase: () => ipcRenderer.send("add-chat-box"),
 });
 
 contextBridge.exposeInMainWorld("electron", {
