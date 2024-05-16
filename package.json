@@ -4,7 +4,7 @@
     "description": "",
     "main": "src/main.js",
     "scripts": {
-        "start": "electron .",
+        "start": "electron . --inspect=9229",
         "package": "electron-forge package",
         "make": "electron-forge make"
     },
