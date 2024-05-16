@@ -23,8 +23,6 @@
         "electron-reload": "^2.0.0-alpha.1"
     },
     "dependencies": {
-        "electron-squirrel-startup": "^1.0.0",
-        "mongodb": "^6.5.0",
-        "realm": "^12.7.1"
+        "mongodb": "^6.5.0"
     }
 }
