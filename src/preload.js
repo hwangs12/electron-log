@@ -12,13 +12,11 @@ contextBridge.exposeInMainWorld("environment", {
     // browserWin: electron.remote.BrowserWindow,
 });
 
-contextBridge.exposeInMainWorld("ipcProcess", {
-    sendError: () => ipcRenderer.send("open-error-dialog"),
-    printMessage: () =>
-        ipcRenderer.on("message:update", function (evt, message) {
-            console.log(evt, message); // Returns: {'SAVED': 'File Saved'}
+contextBridge.exposeInMainWorld("database", {
+    sendAddChatRoomSignal: (chatRoomName) =>
+        ipcRenderer.send("add-chat-box", {
+            chatRoomName,
         }),
-    addChatDatabase: () => ipcRenderer.send("add-chat-box"),
 });
 
 contextBridge.exposeInMainWorld("electron", {

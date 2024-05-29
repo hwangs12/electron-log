@@ -8,7 +8,7 @@ const uri = process.env.mongo_uri;
 console.log(uri);
 const client = new MongoClient(uri);
 
-async function run() {
+/* async function run() {
     try {
         await client.connect();
         const db = client.db("sample_mflix");
@@ -21,7 +21,7 @@ async function run() {
         // Close the database connection when finished or an error occurs
         await client.close();
     }
-}
+} */
 
 // run().catch(console.error);
 
@@ -67,10 +67,10 @@ app.on("activate", () => {
     }
 });
 
-ipcMain.on("add-chat-box", async function (event) {
-    console.log("hoho");
+ipcMain.on("add-chat-box", async function (event, payload) {
+    const { chatRoomName } = payload;
     await client.connect();
     const db = client.db("chat");
     const collection = db.collection("chatroom");
-    await collection.insertOne({ haha: "nana" });
+    await collection.insertOne({ chatRoomName, conversations: [] });
 });

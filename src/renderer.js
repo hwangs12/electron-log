@@ -135,8 +135,8 @@ document.addEventListener("keyup", function (event) {
 document.body.addEventListener("submit", function (event) {
     event.preventDefault();
     if (event.target.id === "channel-add-form") {
-        console.log("haha");
+        const inputElement = document.getElementById("channel-name-input");
+        database.sendAddChatRoomSignal(inputElement.value);
         confirmSubmitAdd();
-        ipcProcess.addChatDatabase();
     }
 });
