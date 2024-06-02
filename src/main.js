@@ -8,6 +8,19 @@ const uri = process.env.mongo_uri;
 console.log(uri);
 const client = new MongoClient(uri);
 
+/* function to list chatrooms from mongo */
+async function getChatrooms() {
+    try {
+        await client.connect();
+        const db = client.db("chat");
+        const collection = db.collection("chatroom");
+        const chatrooms = await collection.find({}).toArray();
+        return chatrooms;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 /* async function run() {
     try {
         await client.connect();
@@ -25,7 +38,7 @@ const client = new MongoClient(uri);
 
 // run().catch(console.error);
 
-const createWindow = () => {
+const createWindow = async () => {
     /* you can create as many windows as you want */
     const window = new BrowserWindow({
         width: 800,
@@ -39,6 +52,9 @@ const createWindow = () => {
     // to prevent the Sync Connection from ending prematurely, start reading from stdin so we don't exit
 
     window.loadFile(path.join(__dirname, "index.html"));
+
+    const chatrooms = await getChatrooms();
+    window.webContents.send("chatrooms", chatrooms);
 
     return window;
 };

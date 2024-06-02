@@ -17,6 +17,10 @@ contextBridge.exposeInMainWorld("database", {
         ipcRenderer.send("add-chat-box", {
             chatRoomName,
         }),
+    listChatrooms: (callback) =>
+        ipcRenderer.on("chatrooms", (_event, value) => {
+            callback(value);
+        }),
 });
 
 contextBridge.exposeInMainWorld("electron", {

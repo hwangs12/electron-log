@@ -117,8 +117,28 @@ function validateInput(inputValue) {
     );
 }
 
+/**
+ * list chatrooms on load
+ * author: Jun Hwang
+ * @version: 1.0
+ */
+function listChatrooms() {
+    const chatPreview = document.getElementById("chat-preview-section");
+    database.listChatrooms((chatrooms) => {
+        chatrooms.forEach((chatroom) => {
+            const div = document.createElement("div");
+            div.classList.add("chat-preview");
+            div.innerText = chatroom.chatRoomName;
+            chatPreview.appendChild(div);
+        });
+    });
+}
+
 /* add event listener on document load */
-document.addEventListener("DOMContentLoaded", addChatButtonOnLoad);
+document.addEventListener("DOMContentLoaded", () => {
+    addChatButtonOnLoad();
+    listChatrooms();
+});
 
 /* add event listener on add chat button */
 addChatButton.addEventListener("click", toggleAddChannel);
